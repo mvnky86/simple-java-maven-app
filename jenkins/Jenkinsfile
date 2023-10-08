@@ -7,11 +7,13 @@ pipeline {
     }
     stages {
         stage('Build') {
+            // Build project
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
+            // Run tests
             steps {
                 sh 'mvn test'
             }
@@ -22,6 +24,7 @@ pipeline {
             }
         }
         stage('Deliver') {
+            // Deliver application
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
